@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.13] - 2026-05-18
+
+### Fixed
+
+- handle empty/malformed API responses from Pi v0.75.0 fetch changes
+
 ## [0.1.12] - 2026-05-08
 
 ### Fixed
@@ -83,7 +89,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Enabled full OIDC publishing (no NPM_TOKEN required)
 
-[unreleased]: https://github.com/shaftoe/pi-zai-usage/compare/v0.1.12...HEAD
+[unreleased]: https://github.com/shaftoe/pi-zai-usage/compare/v0.1.13...HEAD
+[0.1.13]: https://github.com/shaftoe/pi-zai-usage/compare/v0.1.12...v0.1.13
 [0.1.12]: https://github.com/shaftoe/pi-zai-usage/compare/v0.1.11...v0.1.12
 [0.1.11]: https://github.com/shaftoe/pi-zai-usage/compare/v0.1.10...v0.1.11
 [0.1.10]: https://github.com/shaftoe/pi-zai-usage/compare/v0.1.9...v0.1.10
