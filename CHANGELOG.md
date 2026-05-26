@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-26
+
+### Added
+
+- show error codes in footer instead of raw console errors
+
+### Changed
+
+- **deps**: update dependencies (#32)
+- **deps**: update dependencies (#33)
+
 ## [0.1.14] - 2026-05-18
 
 ### Fixed
@@ -95,7 +106,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Enabled full OIDC publishing (no NPM_TOKEN required)
 
-[unreleased]: https://github.com/shaftoe/pi-zai-usage/compare/v0.1.14...HEAD
+[unreleased]: https://github.com/shaftoe/pi-zai-usage/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/shaftoe/pi-zai-usage/compare/v0.1.14...v0.2.0
 [0.1.14]: https://github.com/shaftoe/pi-zai-usage/compare/v0.1.13...v0.1.14
 [0.1.13]: https://github.com/shaftoe/pi-zai-usage/compare/v0.1.12...v0.1.13
 [0.1.12]: https://github.com/shaftoe/pi-zai-usage/compare/v0.1.11...v0.1.12
