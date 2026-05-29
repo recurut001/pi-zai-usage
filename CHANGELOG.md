@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-05-29
+
+### Changed
+
+- **deps**: update dependencies (#34)
+- **deps**: update dependencies (#35)
+
+### Fixed
+
+- add UTC default timezone to support sbx sandboxes
+
 ## [0.2.0] - 2026-05-26
 
 ### Added
@@ -106,7 +117,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Enabled full OIDC publishing (no NPM_TOKEN required)
 
-[unreleased]: https://github.com/shaftoe/pi-zai-usage/compare/v0.2.0...HEAD
+[unreleased]: https://github.com/shaftoe/pi-zai-usage/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/shaftoe/pi-zai-usage/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/shaftoe/pi-zai-usage/compare/v0.1.14...v0.2.0
 [0.1.14]: https://github.com/shaftoe/pi-zai-usage/compare/v0.1.13...v0.1.14
 [0.1.13]: https://github.com/shaftoe/pi-zai-usage/compare/v0.1.12...v0.1.13
