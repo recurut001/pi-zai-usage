@@ -18,10 +18,13 @@ function renderZaiStatus(data: ZaiUsageData, theme: Theme): string {
   return status
 }
 
-export default createUsageExtension<ZaiUsageData>({
-  providerPrefix: "zai",
-  statusKey: "zai-usage",
-  label: "Z.ai",
-  fetchUsage: getZaiUsage,
-  renderStatus: renderZaiStatus,
-})
+const extension: ReturnType<typeof createUsageExtension<ZaiUsageData>> =
+  createUsageExtension<ZaiUsageData>({
+    providerPrefix: "zai",
+    statusKey: "zai-usage",
+    label: "Z.ai",
+    fetchUsage: getZaiUsage,
+    renderStatus: renderZaiStatus,
+  })
+
+export default extension
