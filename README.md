@@ -1,35 +1,42 @@
-# Pi coding agent Z.ai Usage Extension
+# Pi coding agent Z.ai, DeepSeek, and OpenAI Codex Usage Extension
 
-[![codecov](https://codecov.io/gh/shaftoe/pi-zai-usage/graph/badge.svg?token=CcWlPO46JM)](https://codecov.io/gh/shaftoe/pi-zai-usage)
-
-A [Pi coding agent](https://pi.dev/) extension that monitors [Z.ai subscription](https://z.ai/subscribe) API token usage quota and automatically displays usage in the footer when using the Z.ai provider.
+A [Pi coding agent](https://pi.dev/) extension that monitors [Z.ai subscription](https://z.ai/subscribe) API token usage quota, DeepSeek API balance, and OpenAI Codex subscription usage, then automatically displays usage in the first footer/statusline when using the matching provider.
 
 ![screenshot](./screenshot.png)
 
 ## Features
 
-- **Auto Footer Display**: Automatically shows usage in the footer when using Z.ai models
+- **Auto Footer Display**: Automatically shows usage in the first footer/statusline when using Z.ai, DeepSeek, or OpenAI Codex models
 - **Smart Caching**: Caches usage data for 30 seconds to avoid excessive API calls
-- **Time Tracking**: Displays remaining time until quota reset
+- **Z.ai Time Tracking**: Displays remaining time until quota reset for 5-hour, weekly, and monthly quotas
+- **DeepSeek Balance Tracking**: Displays positive USD/CNY credit; if both currencies are zero, displays both in red
+- **OpenAI Codex Usage Tracking**: Displays 5-hour and weekly Codex usage with reset times
 
 ## Install
 
-```bash
-pi install npm:@alexanderfortin/pi-zai-usage
-```
+Published package: <https://www.npmjs.com/package/@beyona/pi-zai-usage>
 
-or
-
-```
-pi install https://github.com/shaftoe/pi-zai-usage
-```
-
-or if you prefer to build and keep it checked out locally:
+### Install as a Pi extension from npm
 
 ```bash
-git clone https://github.com/shaftoe/pi-zai-usage
-cd pi-zai-usage
+pi install npm:@beyona/pi-zai-usage
+```
 
+The package declares its Pi extension entry point in `package.json`, so `pi install` adds the package to your Pi configuration and loads the extension automatically in new Pi sessions. When using a Z.ai, DeepSeek, or OpenAI Codex model, the first footer/statusline displays usage after session start, model selection, and each turn.
+
+### Update the installed extension
+
+```bash
+pi install npm:@beyona/pi-zai-usage@latest
+```
+
+Restart Pi or run `/reload` in an existing session after updating.
+
+### Install from a local checkout
+
+If you prefer to build and keep a source checkout locally, clone your fork and run:
+
+```bash
 # Install dependencies
 bun install
 
@@ -72,10 +79,23 @@ bun run dev
 
 ### Automatic Footer Display
 
-When using a Z.ai model (e.g., `glm-4.7`, `glm-5`, `glm-5-flash`), the extension automatically displays the usage in the footer (between brackets the time left for the quota to be reset):
+When using a Z.ai model (e.g., `glm-4.7`, `glm-5`, `glm-5-flash`), the extension displays the Z.ai quotas right-aligned on the first statusline:
 
 ```
-Z.ai: 45% (2h 15m 30s)
+Z.ai: 5h 100% (2h 18m) · W 34% (1d 2h 44m) · M 4% (10d 2h 44m)
+```
+
+When using a DeepSeek model, the extension displays DeepSeek credit on the same first statusline. It only shows currencies with positive credit. If both USD and CNY are zero, it shows both in red:
+
+```
+DeepSeek: $6.23
+DeepSeek: $0.00 ¥0.00
+```
+
+When using an OpenAI Codex model (`openai-codex` provider), the extension displays Codex usage in the same 5-hour/week shape as Z.ai, without a monthly quota:
+
+```
+Codex: 5h 41% (12:30) · W 39% (09:15 on 21 May)
 ```
 
 The footer updates after each AI turn and on model selection changes.
@@ -84,21 +104,36 @@ The footer updates after each AI turn and on model selection changes.
 
 No configuration needed. The extension automatically:
 - Uses cached data for 30 seconds to avoid excessive API calls
-- Shows/updates status only when Z.ai models are active
-- Clears status when switching to non-Z.ai models
+- Shows/updates status only when Z.ai, DeepSeek, or OpenAI Codex models are active
+- Clears status when switching to other providers
 
 ## API
 
-The extension uses the Z.ai API endpoint: `https://api.z.ai/api/monitor/usage/quota/limit`
+The extension uses these provider API endpoints:
 
-Make sure you're logged in to Z.ai via Pi (`/login for Z.ai`).
+- Z.ai: `https://api.z.ai/api/monitor/usage/quota/limit`
+- DeepSeek: `https://api.deepseek.com/user/balance`
+- OpenAI Codex: `https://chatgpt.com/backend-api/wham/usage`
+
+Make sure you're logged in to the provider via Pi (for example, `/login for Z.ai`).
 
 ## Releasing
 
 This project uses automated publishing to NPM via GitHub Actions. The workflow will:
 - Run all CI checks
 - Build the package
-- Publish to NPM with provenance (signed) via [trusted publishing](https://docs.npmjs.com/trusted-publishers)
+- Publish to NPM via [trusted publishing](https://docs.npmjs.com/trusted-publishers) (without provenance while this repository is private)
+
+## Redistribution notes
+
+Current redistribution progress:
+
+- `@beyona/pi-zai-usage` is published publicly on npm.
+- The source repository uses `main` as the default branch.
+- The package vendors the helper code formerly provided by `@alexanderfortin/pi-usage-lib`, the DeepSeek balance logic formerly provided by `@alexanderfortin/pi-deepseek-usage`, and bundled Codex usage logic based on `@narumitw/pi-codex-usage`.
+- The package has no runtime dependencies.
+
+The vendored helper code and original Z.ai/DeepSeek extensions are MIT-licensed by Alexander Fortin. The Codex reference package is MIT-licensed by narumitw.
 
 ## License
 

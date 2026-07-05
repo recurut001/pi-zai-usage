@@ -1,7 +1,7 @@
 {
-  "name": "@alexanderfortin/pi-zai-usage",
-  "version": "0.3.2",
-  "description": "Pi extension for monitoring Z.ai API token usage quota",
+  "name": "@beyona/pi-zai-usage",
+  "version": "0.3.7",
+  "description": "Pi extension for monitoring Z.ai, DeepSeek, and OpenAI Codex usage",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -25,12 +25,7 @@
     "release": "semantic-release",
     "release:dry-run": "semantic-release --dry-run"
   },
-  "dependencies": {
-    "@alexanderfortin/pi-usage-lib": "^0.2.3",
-    "temporal-polyfill": "^1.0.1"
-  },
   "devDependencies": {
-    "@alexanderfortin/semantic-release-keep-a-changelog": "^0.4.4",
     "@biomejs/biome": "^2.5.1",
     "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/exec": "^7.1.0",
@@ -60,18 +55,21 @@
     "pi-extension",
     "zai",
     "Z.ai",
+    "deepseek",
+    "codex",
+    "openai-codex",
     "usage-monitoring",
-    "api-quota"
+    "api-quota",
+    "api-balance"
   ],
   "pi": {
     "extensions": [
       "./dist/index.js"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/shaftoe/pi-zai-usage"
-  },
   "author": "Alexander Fortin",
+  "contributors": [
+    "beyona"
+  ],
   "license": "MIT"
 }
